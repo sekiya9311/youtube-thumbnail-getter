@@ -43,7 +43,7 @@ export default function Main() {
 
       <footer className='fixed bottom-0 w-full border-t h-16 flex justify-end items-center bg-black text-white'>
         <div className='px-4'>
-          <span className='text-sm'>Created by <a href='https://twitter.com/sekiya9311' target='_blank' rel='noopener' className='border-b-2 border-white'>@sekiya9311</a></span>
+          <span className='text-sm'>Created by <a href='https://twitter.com/sekiya9311' target='_blank' rel='noopener noreferrer' className='border-b-2 border-white'>@sekiya9311</a></span>
         </div>
       </footer>
     </div>
