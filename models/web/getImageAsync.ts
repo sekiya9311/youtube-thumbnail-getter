@@ -4,6 +4,5 @@ export const getImageAsync = async (urlText: string) => {
   apiUrl.searchParams.set('url', urlText);
 
   const response = await fetch(apiUrl.toString());
-  const arrayBuffer = await response.arrayBuffer();
-  return new Blob([arrayBuffer]);
+  return await response.blob();
 };

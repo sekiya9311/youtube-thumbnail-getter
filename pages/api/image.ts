@@ -3,7 +3,7 @@ import { Item } from '../../models/Videos';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ArrayBuffer>
+  res: NextApiResponse
 ) {
   const setStatusCodeAndEnd = (statusCode: number) => {
     res.statusCode = statusCode;
@@ -21,10 +21,10 @@ export default async function handler(
   }
 
   const response = await fetch(imageUrl);
-  const blob = await response.blob();
+  const buf = await response.arrayBuffer();
 
   res.statusCode = 200;
   res.setHeader('Content-Type', response.headers.get('Content-Type')!);
   res.setHeader('Content-Length', response.headers.get('Content-Length')!);
-  res.end(Buffer.from(await blob.arrayBuffer()));
+  res.end(Buffer.from(buf));
 }
