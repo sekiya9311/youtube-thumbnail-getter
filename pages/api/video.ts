@@ -6,7 +6,7 @@ const VIDEOS_API_URL_ENDPOINT =
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Item>
+  res: NextApiResponse
 ) {
   const setStatusCodeAndEnd = (statusCode: number) => {
     res.statusCode = statusCode;
