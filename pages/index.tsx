@@ -2,6 +2,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import blank from '../public/blank.png';
+import { getVideoAsync } from '../models/web/getVideoAsync';
+import { extractThumbnailUrl } from '../models/Videos';
 
 export default function Main() {
   const [url, setUrl] = useState('');
@@ -9,6 +11,20 @@ export default function Main() {
   const [thumbnailUrl, setThumbnailUrl] = useState(blank.src);
 
   const loadedThumbnail = thumbnailUrl !== blank.src;
+
+  const getThumbnail = async () => {
+    try {
+      const videoInfo = await getVideoAsync(url);
+      const imageUrl = extractThumbnailUrl(videoInfo);
+      if (imageUrl === null) {
+        return;
+      }
+      setThumbnailUrl(imageUrl);
+      setSongName(videoInfo.snippet.title);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   return (
     <div className='flex flex-col'>
@@ -39,6 +55,7 @@ export default function Main() {
             <button
               type='button'
               className='flex justify-center items-center w-4/12 bg-red-400 rounded text-white text-sm font-bold md:text-xl p-2 md:p-4 hover:bg-red-600'
+              onClick={getThumbnail}
             >
               Get Thumbnail
             </button>
@@ -49,6 +66,7 @@ export default function Main() {
               alt='Thumbnail image'
               width='640'
               height='360'
+              objectFit='cover'
             />
           </div>
           <div className='flex justify-end'>

@@ -49,3 +49,11 @@ export interface PageInfo {
   totalResults: number;
   resultsPerPage: number;
 }
+
+export const extractThumbnailUrl = (videoInfo: Item) => {
+  const thumbnails = Object.values(videoInfo.snippet.thumbnails).sort(
+    (a, b) => b.width - a.width
+  );
+
+  return thumbnails[0].url ?? null;
+};

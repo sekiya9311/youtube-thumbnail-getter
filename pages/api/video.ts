@@ -35,7 +35,12 @@ export default async function handler(
   }
 
   const responseObj = (await apiRes.json()) as Videos;
+  if (responseObj.items.length === 0) {
+    setStatusCodeAndEnd(404);
+    return;
+  }
+
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify(responseObj));
+  res.end(JSON.stringify(responseObj.items[0]));
 }
