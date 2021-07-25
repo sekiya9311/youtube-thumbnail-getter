@@ -1,14 +1,16 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import blank from '../public/blank.png';
 import { getVideoAsync } from '../models/web/getVideoAsync';
 import { extractThumbnailUrl } from '../models/Videos';
+import { getImageAsync } from '../models/web/getImageAsync';
 
 export default function Main() {
   const [url, setUrl] = useState('');
   const [songName, setSongName] = useState('');
   const [thumbnailUrl, setThumbnailUrl] = useState(blank.src);
+  const downloadTag = useRef<HTMLAnchorElement>(null);
 
   const loadedThumbnail = thumbnailUrl !== blank.src;
 
@@ -22,7 +24,27 @@ export default function Main() {
       setThumbnailUrl(imageUrl);
       setSongName(videoInfo.snippet.title);
     } catch (e) {
-      console.error(e);
+      alert(e);
+    }
+  };
+
+  const downloadThumbnail = async () => {
+    if (!downloadTag.current) {
+      return;
+    }
+
+    const blob = await getImageAsync(thumbnailUrl);
+    const blobUrl = window.URL.createObjectURL(blob);
+    try {
+      downloadTag.current.href = blobUrl;
+      downloadTag.current.download = `${songName}${thumbnailUrl.substring(
+        thumbnailUrl.lastIndexOf('.')
+      )}`;
+      downloadTag.current.click();
+    } catch (e) {
+      alert(e);
+    } finally {
+      URL.revokeObjectURL(blobUrl);
     }
   };
 
@@ -75,6 +97,7 @@ export default function Main() {
               className={`flex justify-center items-center w-2/12 bg-red-400 rounded text-white text-sm font-bold md:text-xl p-2 md:p-4 hover:bg-red-600${
                 loadedThumbnail ? '' : ' opacity-25 cursor-not-allowed'
               }`}
+              onClick={downloadThumbnail}
             >
               Save
             </button>
@@ -97,6 +120,8 @@ export default function Main() {
           </span>
         </div>
       </footer>
+
+      <a className='hidden' ref={downloadTag} />
     </div>
   );
 }
