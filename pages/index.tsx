@@ -6,6 +6,7 @@ import { getVideoAsync } from '../models/web/getVideoAsync';
 import { extractThumbnailUrl } from '../models/Videos';
 import { getImageAsync } from '../models/web/getImageAsync';
 import { MdFileDownload } from 'react-icons/md';
+import { FaGithub } from 'react-icons/fa';
 
 export default function Main() {
   const [url, setUrl] = useState('');
@@ -106,7 +107,17 @@ export default function Main() {
         </div>
       </main>
 
-      <footer className='fixed bottom-0 w-full border-t h-16 flex justify-end items-center bg-black text-white'>
+      <footer className='fixed bottom-0 w-full border-t h-16 flex justify-between items-center bg-black text-white'>
+        <div className='ml-4'>
+          <a
+            href='https://github.com/sekiya9311/youtube-thumbnail-getter'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-4xl'
+          >
+            <FaGithub />
+          </a>
+        </div>
         <div className='px-4'>
           <span className='text-sm'>
             Created by{' '}
