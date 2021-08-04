@@ -5,6 +5,7 @@ import blank from '../public/blank.png';
 import { getVideoAsync } from '../models/web/getVideoAsync';
 import { extractThumbnailUrl } from '../models/Videos';
 import { getImageAsync } from '../models/web/getImageAsync';
+import { MdFileDownload } from 'react-icons/md';
 
 export default function Main() {
   const [url, setUrl] = useState('');
@@ -94,12 +95,12 @@ export default function Main() {
           <div className='flex justify-end'>
             <button
               disabled={!loadedThumbnail}
-              className={`flex justify-center items-center w-2/12 bg-red-400 rounded text-white text-sm font-bold md:text-xl p-2 md:p-4 hover:bg-red-600${
+              className={`flex justify-center items-center w-2/12 bg-red-400 rounded-full text-white text-2xl font-bold p-2 md:p-4 hover:bg-red-600${
                 loadedThumbnail ? '' : ' opacity-25 cursor-not-allowed'
               }`}
               onClick={downloadThumbnail}
             >
-              Save
+              <MdFileDownload />
             </button>
           </div>
         </div>
