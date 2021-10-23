@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 2048 2048">
+  <g id="グループ_1" data-name="グループ 1" transform="translate(2075 -205)">
+    <g id="長方形_3" data-name="長方形 3" transform="translate(-2075 205)" fill="#000000" stroke="#000000" stroke-width="8">
+      <rect width="2048" height="2048" rx="128" stroke="none"/>
+      <rect x="4" y="4" width="2040" height="2040" rx="124" fill="none"/>
+    </g>
+    <g id="長方形_1" data-name="長方形 1" transform="translate(-1851 779)" fill="#fff" stroke="#000000" stroke-linecap="round" stroke-width="16">
+      <rect width="1600" height="900" rx="64" stroke="none"/>
+      <rect x="8" y="8" width="1584" height="884" rx="56" fill="none"/>
+    </g>
+    <g id="長方形_2" data-name="長方形 2" transform="translate(-1771 859)" fill="rgba(255,255,255,0)" stroke="#000000" stroke-width="4">
+      <rect width="1440" height="740" rx="40" stroke="none"/>
+      <rect x="2" y="2" width="1436" height="736" rx="38" fill="none"/>
+    </g>
+    <g id="多角形_1" data-name="多角形 1" transform="translate(-801 979) rotate(90)" fill="#000000">
+      <path d="M 499.1910095214844 499.5 L 0.8090000152587891 499.5 L 250 1.118000030517578 L 499.1910095214844 499.5 Z" stroke="none"/>
+      <path d="M 250 2.236053466796875 L 1.6180419921875 499 L 498.3819580078125 499 L 250 2.236053466796875 M 250 0 L 500 500 L 0 500 L 250 0 Z" stroke="none" fill="#000000"/>
+    </g>
+  </g>
+</svg>
