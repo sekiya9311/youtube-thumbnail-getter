@@ -150,7 +150,7 @@ export default function Main() {
               alt='Thumbnail image'
               width='640'
               height='360'
-              objectFit='cover'
+              className='object-cover'
             />
           </div>
           <div className='flex justify-end'>
