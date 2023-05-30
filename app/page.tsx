@@ -1,4 +1,5 @@
-import Head from 'next/head';
+'use client';
+
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import blank from '../public/blank.png';
@@ -7,71 +8,6 @@ import { extractThumbnailUrl } from '../models/Videos';
 import { getImageAsync } from '../models/web/getImageAsync';
 import { MdFileDownload } from 'react-icons/md';
 import { FaGithub } from 'react-icons/fa';
-
-const AppHead = () => {
-  return (
-    <Head>
-      <title>YouTube Thumbnail Getter</title>
-      <meta name='application-name' content='YouTube Thumbnail Getter' />
-      <meta name='apple-mobile-web-app-capable' content='yes' />
-      <meta name='apple-mobile-web-app-status-bar-style' content='default' />
-      <meta
-        name='apple-mobile-web-app-title'
-        content='YouTube Thumbnail Getter'
-      />
-      <meta
-        name='description'
-        content='We can download Youtube video thumbnail image !'
-      />
-      <meta name='format-detection' content='telephone=no' />
-      <meta name='mobile-web-app-capable' content='yes' />
-      {/*<meta name='msapplication-config' content='/icons/browserconfig.xml' />*/}
-      {/*<meta name='msapplication-TileColor' content='#e53e3e' />*/}
-      {/*<meta name='msapplication-tap-highlight' content='no' />*/}
-      <meta name='theme-color' content='#e53e3e' />
-      <link rel='apple-touch-icon' href='/icon-512x512.png' />
-      <link rel='apple-touch-icon' sizes='256x256' href='/icon-256x256.png' />
-      <link rel='apple-touch-icon' sizes='384x384' href='/icon-384x384.png' />
-      <link rel='apple-touch-icon' sizes='192x192' href='/icon-192x192.png' />
-      <link rel='icon' href='/favicon.ico' />
-      <link rel='manifest' href='/manifest.webmanifest' />
-
-      <link rel='mask-icon' href='/monochrome.svg' color='#e53e3e' />
-      <link rel='shortcut icon' href='/favicon.ico' />
-
-      <meta name='twitter:card' content='app' />
-      <meta
-        name='twitter:url'
-        content='https://youtube-thumbnail-getter.sekiya9311.dev/'
-      />
-      <meta name='twitter:title' content='YouTube Thumbnail Getter' />
-      <meta
-        name='twitter:description'
-        content='We can download Youtube video thumbnail image !'
-      />
-      <meta
-        name='twitter:image'
-        content='https://youtube-thumbnail-getter.sekiya9311.dev/icon-512x512.png'
-      />
-      <meta name='twitter:creator' content='@sekiya9311' />
-      <meta property='og:type' content='website' />
-      <meta property='og:title' content='YouTube Thumbnail Getter' />
-      <meta
-        property='og:description'
-        content='We can download Youtube video thumbnail image !'
-      />
-      <meta property='og:site_name' content='YouTube Thumbnail Getter' />
-      <meta
-        property='og:url'
-        content='https://youtube-thumbnail-getter.sekiya9311.dev/'
-      />
-      <meta
-        property='og:image'
-        content='https://youtube-thumbnail-getter.sekiya9311.dev/icon-512x512.png'
-      />
-    </Head>
-  );
-};
 
 export default function Main() {
   const [url, setUrl] = useState('');
@@ -117,7 +53,6 @@ export default function Main() {
 
   return (
     <div className='flex flex-col'>
-      <AppHead />
       <main className='container mx-auto flex flex-col justify-center items-center pt-4 px-2'>
         <div className='mb-16'>
           <h1 className='text-2xl md:text-5xl text-center font-bold text-red-600'>
