@@ -1,6 +1,8 @@
 export const getImageAsync = async (urlText: string) => {
-  const response = await fetch(urlText);
-  const buf = await response.arrayBuffer();
+  const apiUrl = new URL(location.origin);
+  apiUrl.pathname = '/api/image';
+  apiUrl.searchParams.set('url', urlText);
 
-  return new Blob([buf], { type: response.headers.get('content-type')! });
+  const response = await fetch(apiUrl.toString());
+  return await response.blob();
 };
