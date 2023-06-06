@@ -51,9 +51,9 @@ export interface PageInfo {
 }
 
 export const extractThumbnailUrl = (videoInfo: Item) => {
-  const thumbnails = Object.values(videoInfo.snippet.thumbnails).sort(
-    (a, b) => b.width - a.width
-  );
+  const thumbnails = (
+    Object.values(videoInfo.snippet.thumbnails) as Default[]
+  ).sort((a, b) => b.width - a.width);
 
   return thumbnails[0].url ?? null;
 };
