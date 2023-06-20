@@ -2,9 +2,11 @@ import { Videos } from '../_models/Videos';
 
 const extractVideoId = (urlText: string) => {
   const url = new URL(urlText);
+  const str = url.protocol + '//' + url.host + url.pathname;
   if (
-    url.protocol + '//' + url.host + url.pathname ===
-    'https://www.youtube.com/watch'
+    str === 'https://www.youtube.com/watch' ||
+    str === 'https://youtube.com/watch' ||
+    str === 'https://m.youtube.com/watch'
   ) {
     return url.searchParams.get('v');
   }
